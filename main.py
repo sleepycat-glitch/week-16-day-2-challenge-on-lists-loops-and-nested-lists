@@ -103,14 +103,28 @@
 student_name = [ ]
 item_requested = [ ]
 quantity_requested = [ ] 
-name = input("Please type in student's first and last name: ")
-student_name.append(name)
-item = input("What item(s) would you like to purchase?: ")
-item_requested.append(item)
-quantity = int(input("How many of the item you requested would you like?: "))
-quantity_requested.append(quantity)
+order_size = [ ]
+n = int(input("How many requests would you like to make?: "))
 
-search = input("Please input the first name of the student you would like to find: ")
+for _ in range(n):
+  name = input("Please type in student's first and last name: ")
+  student_name.append(name)
+  item = input("What item(s) would you like to purchase?: ")
+  item_requested.append(item)
+  quantity = int(input("How many of the item you requested would you like?: "))
+  quantity_requested.append(quantity)
+  if quantity>5:
+      order_size.append("Large order detected!")
+  else:
+      order_size.append("Orders within normal limits.")
+
+requests = [student_name, 
+            item_requested, 
+            quantity_requested, 
+            order_size]
+print(requests)
+
+search = input("Please input the name of the student you would like to find: ")
 if search in student_name:
     print(search)
 else:
@@ -118,12 +132,6 @@ else:
 print(item_requested[-1])
 
 print(quantity_requested)
-
-order_size = [ ]
-if quantity>5:
-    order_size.append("Large order detected!")
-else:
-    order_size.append("Orders within normal limits.")
 
 temp = quantity_requested
 temp.sort()
